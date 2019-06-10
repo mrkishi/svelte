@@ -1,0 +1,46 @@
+pool:
+  vmImage: $(os)
+
+steps:
+- task: NodeTool@0
+  displayName: Install Node.js
+  inputs:
+    versionSpec: $(node)
+
+- script: npm ci
+  displayName: Install dependencies and build Svelte
+
+- script: npm test
+  displayName: Run tests
+
+strategy:
+  matrix:
+    linux-node8:
+      os: ubuntu-16.04
+      node: 8.x
+    linux-node10:
+      os: ubuntu-16.04
+      node: 10.x
+    linux-node12:
+      os: ubuntu-16.04
+      node: 12.x
+
+    macos-node8:
+      os: macOS-10.14
+      node: 8.x
+    macos-node10:
+      os: macOS-10.14
+      node: 10.x
+    macos-node12:
+      os: macOS-10.14
+      node: 12.x
+
+    windows-node8:
+      os: win1803
+      node: 8.x
+    windows-node10:
+      os: win1803
+      node: 10.x
+    windows-node12:
+      os: win1803
+      node: 12.x
