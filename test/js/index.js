@@ -37,8 +37,8 @@ describe("js", () => {
 			const expected = fs.readFileSync(`${dir}/expected.js`, "utf-8");
 
 			assert.equal(
-				actual.trim().replace(/^[ \t]+$/gm, ""),
-				expected.trim().replace(/^[ \t]+$/gm, "")
+				actual.trim().replace(/^[ \t\r]+$/gm, ""),
+				expected.trim().replace(/^[ \t\r]+$/gm, "")
 			);
 		});
 	});
